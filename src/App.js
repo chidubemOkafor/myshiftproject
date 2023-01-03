@@ -35,10 +35,10 @@ const router = createBrowserRouter([
         path: "/Products/:id",
         element: <Products />,
       },
-      // {
-      //   path: "/AboutUs",
-      //   element: <AboutUs />,
-      // },
+      {
+        path: "/AboutUs",
+        element: <AboutUs />,
+      },
       {
         path: "/Shelf",
         elements: <Shelf />,

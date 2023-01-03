@@ -1,7 +1,16 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-const ConnectApi = () => {
-  return <div></div>;
-};
+// const ConnectApi = () => {
+//     const [data, setData] = useState()
+//     const [error, setError] = useState()
+//     const [] = useState()
 
-export default ConnectApi;
+//     useEffect(()=> {
+//         const fetData = (url) => {
+//             const result =
+//         }
+//     },[url])
+//   return <div></div>;
+// };
+
+// export default ConnectApi;

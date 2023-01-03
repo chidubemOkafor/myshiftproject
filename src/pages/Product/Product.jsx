@@ -1,9 +1,101 @@
 import React from "react";
-
+import { useState } from "react";
 const Product = () => {
+  const [selected, setSelected] = useState(null);
+
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
-    <div>
-      <div className="mt-20 bg-black fixed">hellow world</div>
+    <div className=" pt-[10em] flex justify-center pb-[10em] gap-16">
+      <div className="bg-black h-[34em] w-[34em]"></div>
+      <div>
+        <div className="w-[30em]">
+          <h4 className="font-bold text-5xl pb-3 ">Name of clothing items</h4>
+        </div>
+        <p className="font-bold text-xl pb-3">$40</p>
+        <p className="pb-5">discription should be here boys lets finish this</p>
+        <div className="flex-row">
+          <p className="mb-2">Size</p>
+          <div className="flex">
+            <div className="relative inline-block text-left pb-5">
+              <div>
+                <span className="rounded-md shadow-sm">
+                  <button
+                    type="button"
+                    className="inline-flex justify-center w-[15em] h-11 rounded-sm border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+                    id="options-menu"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    onClick={() =>
+                      setSelected(selected === null ? sizes[0] : null)
+                    }
+                  >
+                    {selected || "Select a size"}
+                    <svg
+                      className="-mr-1 ml-2 h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+              {selected && (
+                <div className="origin-top-left absolute left-0 mt-2 -ml-1 w-56 rounded-md shadow-lg">
+                  <div className="rounded-md bg-white shadow-xs">
+                    <div
+                      className="py-1"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="options-menu"
+                    >
+                      {sizes.map((size) => (
+                        <a
+                          key={size}
+                          href="#"
+                          className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                          role="menuitem"
+                          onClick={() => setSelected(size)}
+                        >
+                          {size}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <button className="border rounded-sm  border-black border-solid w-[30em] h-11">
+            add to cart
+          </button>
+        </div>
+        <button className="mt-2 rounded-sm  bg-blue-600 hover:bg-blue-500 text-white w-[30em] h-11">
+          pay with stripe
+        </button>
+        <p className="text-sm italic text-slate-600 pt-2">
+          For a tighter fit we advise getting the size down.
+        </p>{" "}
+        <p className="pt-10 pb-5 font-bold">Specifications:</p>
+        <ul className="list-disc pl-5">
+          <li>100% Organic open end cotton</li>
+          <li>1x1 rib at neck collar</li>
+          <li>Sleeve hem and bottom hem with wide double needle topstitch</li>
+          <li>Set-in sleeve</li>
+        </ul>
+        <p className="pt-10 pb-5 font-bold">Product Care:</p>
+        <ul className="list-disc pl-5">
+          <li>Do not tumble dry</li>
+          <li>Washing: 30° gentle</li>
+          <li>Do not bleach</li>
+          <li>Ironing: 110°</li>
+        </ul>
+      </div>
     </div>
   );
 };
