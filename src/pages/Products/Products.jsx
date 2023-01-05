@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../../components/Cards/Card";
 
 const Products = () => {
   return (
@@ -13,7 +14,9 @@ const Products = () => {
         </div>
         <div className="pr-[7.5em]">200 products</div>
       </div>
-      <div>why is this not working</div>
+      <div>
+        <Card />
+      </div>
     </div>
   );
 };
