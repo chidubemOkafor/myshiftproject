@@ -26,7 +26,7 @@ const Footer = () => {
                 className="w-[25em] border border-white  h-11 bg-white text-white"
                 type="email"
                 name="email"
-                placeHolder="Email address"
+                placeholder="Email address"
               />
               <button
                 className=" bg-white text-black font-bold w-28 h-11 hover:text-white hover:bg-black"

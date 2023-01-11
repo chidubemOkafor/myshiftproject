@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Images": {
+    "image": {
       "type": "media",
       "multiple": true,
       "required": true,
@@ -33,7 +33,7 @@
       "type": "string",
       "required": true
     },
-    "Slug": {
+    "slug": {
       "type": "uid"
     },
     "categories": {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const FetchStrapiData = (url, apiToken) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -12,10 +12,9 @@ const FetchStrapiData = (url, apiToken) => {
 
       try {
         const response = await axios.get(url, {
-          headers: { Authorization: "chidubem" + apiToken },
+          headers: { Authorization: "Bearer " + apiToken },
         });
-        const json = await response.json();
-        setData(json);
+        setData(response.data);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -23,7 +22,7 @@ const FetchStrapiData = (url, apiToken) => {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, apiToken]);
 
   return { data, error, loading };
 };

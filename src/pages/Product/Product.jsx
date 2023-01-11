@@ -1,18 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import FetchStrapiData from "../../Hooks/FetchStrapiData";
 const Product = () => {
   const [selected, setSelected] = useState(null);
-
+  const { id } = useParams();
+  const { data, loading, error } = FetchStrapiData(
+    "http://localhost:1337/api/Products/" + id,
+    "15262b76e81005a153caa1620e297eb64dd64895e23d6119c58b84dbde32ba484c4ca700db33caa90724c4e98041bb7d09a088f3f2d06aa711b1767876ef8429bcaaa6d2006cfc4e7d3efef631055699e138c7d5db74f8a50df1bcf47d69ef9b4fe4ef28e511ebcc43501ce1c95c08573a6ef0b30da34b643af07ff38de43b63"
+  );
+  console.log(data);
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
     <div className=" pt-[10em] flex justify-center pb-[10em] gap-16">
       <div className="bg-black h-[34em] w-[34em]"></div>
       <div>
         <div className="w-[30em]">
-          <h4 className="font-bold text-5xl pb-3 ">Name of clothing items</h4>
+          <h4 className="font-bold text-5xl pb-3 ">{data.data.name}</h4>
         </div>
-        <p className="font-bold text-xl pb-3">$40</p>
-        <p className="pb-5">discription should be here boys lets finish this</p>
+        <p className="font-bold text-xl pb-3">{data.price}</p>
+        <p className="pb-5">{data.description}</p>
         <div className="flex-row">
           <p className="mb-2">Size</p>
           <div className="flex">

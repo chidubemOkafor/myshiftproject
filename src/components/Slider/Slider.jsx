@@ -29,8 +29,8 @@ const Slider = () => {
   // };
 
   return (
-    <div className="bg-white bg-center h-screen w-screen] flex justify-center items-center">
-      <Link to={"./Products/:id"}>
+    <div className="bg-white bg-center h-screen w-auto bg-cover bg-[url(https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg)] flex justify-center items-center">
+      <Link to={"./Products"}>
         <button className="h-14 mx-auto bg-black text-white w-32 hover:bg-white hover:text-black">
           Shop Now
         </button>

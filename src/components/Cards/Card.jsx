@@ -1,16 +1,10 @@
 import React from "react";
 import FetchStrapiData from "../../Hooks/FetchStrapiData";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { TfiArrowRight, TfiArrowLeft } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
-const Card = () => {
-  // a61484bdd8f4da71355cc6d3f241c011b355fd5ce9f93b5664a9e03a63cabeeb409c709f292f9b189d7d8de0eac9a17745b7b9f5b3ed1a4f1ce15adf9db940f0296cee73db6ea5308c75da67713e74fa5000a14be5a09b865b5b955d0de500ed592a86c6c672d20fa555928ff4b72a97c99294ecffc59b2d04d898ef345693c5
-  const { data, error, loading } = FetchStrapiData(
-    "http://localhost:1337/api/Products",
-    "a61484bdd8f4da71355cc6d3f241c011b355fd5ce9f93b5664a9e03a63cabeeb409c709f292f9b189d7d8de0eac9a17745b7b9f5b3ed1a4f1ce15adf9db940f0296cee73db6ea5308c75da67713e74fa5000a14be5a09b865b5b955d0de500ed592a86c6c672d20fa555928ff4b72a97c99294ecffc59b2d04d898ef345693c5"
-  );
-  console.log(data);
-
+const Card = ({ data, error, loading }) => {
   const style1 = "flex justify-center pt-8 pb-8";
   if (loading)
     return (
@@ -20,27 +14,75 @@ const Card = () => {
       </p>
     );
   if (error) return <div className={style1}>error</div>;
+
+  const image = "http://localhost:1337";
+
   return (
+    // <div>
+    //   {data.data.map((product) => (
+    //     <div key={product.id} slug={product.attributes.slug}>
+    //       <Link to={`./Product/${product.id}`}>
+    //         <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    //           <img
+    //             className="w-full"
+    //             src={image + product.attributes.image.data[0].attributes.url}
+    //             alt="Product Image"
+    //           />
+    //           <div className="px-6 py-4">
+    //             <div className="font-bold text-xl mb-2">
+    //               {product.attributes.name}
+    //             </div>
+    //             <p className="text-gray-700 text-base">
+    //               {product.attributes.description}
+    //             </p>
+    //           </div>
+    //           <div className="px-6 py-4 flex justify-between items-center">
+    //             <span className="text-gray-700 font-bold">
+    //               {product.attributes.price}
+    //             </span>
+    //             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    //               Add to Cart
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </Link>
+    //     </div>
+    //   ))}
+    // </div>
     <div>
-      {data.map((product) => (
-        <div key={product.id} slug={product.Slug}>
-          <Link to={`./Product/${product.id}`}>
-            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-              <img class="w-full" src={product.images} alt="Product Image" />
-              <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">{product.name}</div>
-                <p class="text-gray-700 text-base">{product.discription}</p>
-              </div>
-              <div class="px-6 py-4 flex justify-between items-center">
-                <span class="text-gray-700 font-bold">{product.price}</span>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Add to Cart
-                </button>
-              </div>
+      <div className="flex justify-center text-zinc-700">
+        <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3">
+          {data.data?.map((item) => (
+            <div key={item.id} slug={item.attributes.slug}>
+              <Link to={`/Product/${item.id}`}>
+                <div className="">
+                  <div className="w-[12em] h-[12em]">
+                    <img
+                      src={image + item.attributes.image.data[0].attributes.url}
+                      alt="Product Image"
+                    />
+                  </div>
+                  <div className="w-[10em] font-bold text-xl">
+                    {item.attributes.name}
+                  </div>
+                  <p className="font-bold">${item.attributes.price}</p>
+                </div>
+              </Link>
             </div>
-          </Link>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="flex justify-center pb-11">
+        <button className="border border-black w-[4em] h-[3em] flex justify-center pt-2">
+          <TfiArrowLeft className="h-[2em] w-[2em]" />
+        </button>
+        <div className="my-auto mx-10">
+          <p>Page 1 of 4</p>
+        </div>
+        <button className="border border-black w-[4em] h-[3em] flex justify-center pt-2">
+          <TfiArrowRight className="h-[2em] w-[2em]" />
+        </button>
+      </div>
     </div>
   );
 };

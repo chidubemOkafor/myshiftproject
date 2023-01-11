@@ -4,6 +4,7 @@ import Product from "./pages/Product/Product";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import Cart from "./pages/Cart/Cart";
 import Shelf from "./pages/Shelf/Shelf";
 import "./App.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
         element: <Product />,
       },
       {
-        path: "/Products/:id",
+        path: "/Products",
         element: <Products />,
       },
       {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/Shelf",
         elements: <Shelf />,
+      },
+      {
+        path: "/Cart",
+        element: <Cart />,
       },
     ],
   },
