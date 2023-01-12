@@ -5,7 +5,7 @@ const Product = () => {
   const [selected, setSelected] = useState(null);
   const { id } = useParams();
   const { data, loading, error } = FetchStrapiData(
-    "http://localhost:1337/api/Products/" + id,
+    "http://localhost:1337/api/Products&populate=*/" + id,
     "15262b76e81005a153caa1620e297eb64dd64895e23d6119c58b84dbde32ba484c4ca700db33caa90724c4e98041bb7d09a088f3f2d06aa711b1767876ef8429bcaaa6d2006cfc4e7d3efef631055699e138c7d5db74f8a50df1bcf47d69ef9b4fe4ef28e511ebcc43501ce1c95c08573a6ef0b30da34b643af07ff38de43b63"
   );
   console.log(data);
