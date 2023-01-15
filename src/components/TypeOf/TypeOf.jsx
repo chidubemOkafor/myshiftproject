@@ -11,11 +11,11 @@ const TypeOf = (props) => {
   console.log(data);
   return (
     <div>
-      <div className="pb-[1em] flex justify-center font-bold text-4xl pt-[1em] ">
+      <div className="pb-[1em] flex justify-center font-bold text-4xl pt-[1em]">
         <h4>{props.type} products </h4>
       </div>
-      <div className="flex justify-center text-zinc-700">
-        <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3">
+      <div className="flex justify-center">
+        <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3 w-[68em]">
           {data.data?.map((item) => (
             <div key={item.id} slug={item.attributes.slug}>
               <Link to={`/Product/${item.id}`}>

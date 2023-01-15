@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "../../components/Slider/Slider";
 import TypeOf from "../../components/TypeOf/TypeOf";
 import MaleAndFemale from "../../components/MaleAndFemale/MaleAndFemale";

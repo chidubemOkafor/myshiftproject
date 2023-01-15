@@ -3,12 +3,12 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="bg-black h-[26em] justify-center text-white flex ">
-      <div className="flex pt-14 gap-x-24">
+      <div className="flex pt-14 gap-x-24 w-[68em]">
         <div className="justify-evenly">
           <div className="mb-5">
             <p>CUSTOMER CARE</p>
           </div>
-          <div className="flex gap-x-8 ">
+          <div className="flex gap-x-8 text-sm">
             <button>Contact Us</button>
             <button>Shipping & Returns</button>
             <button>Privacy Policy</button>

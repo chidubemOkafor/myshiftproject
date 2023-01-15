@@ -50,8 +50,8 @@ const Card = ({ data, error, loading }) => {
     //   ))}
     // </div>
     <div>
-      <div className="flex justify-center text-zinc-700">
-        <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3">
+      <div className="flex justify-center">
+        <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3 w-[68em]">
           {data.data?.map((item) => (
             <div key={item.id} slug={item.attributes.slug}>
               <Link to={`/Product/${item.id}`}>
