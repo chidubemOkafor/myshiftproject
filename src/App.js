@@ -17,7 +17,7 @@ let Title;
 const Layout = ({ setTitle, setChannel }) => {
   return (
     <div>
-      <Navbar setTitle={setTitle} setChannel={setChannel} />
+      <Navbar />
       <Outlet />
       <Footer />
     </div>
@@ -25,12 +25,13 @@ const Layout = ({ setTitle, setChannel }) => {
 };
 function App() {
   const [channel, setChannel] = useState("Products?populate=*");
+  const [category, setCategory] = useState(false);
   const [title, setTitle] = useState("SHOP ALL");
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout setTitle={setTitle} setChannel={setChannel} />,
+      element: <Layout />,
       children: [
         {
           path: "/",
@@ -48,12 +49,14 @@ function App() {
               setTitle={setTitle}
               channel={channel}
               setChannel={setChannel}
+              category={category}
+              setCategory={setCategory}
             />
           ),
         },
         {
           path: "/Products/Hoodies",
-          element: <Hoodies setTitle={setTitle} />,
+          element: <Hoodies />,
         },
         {
           path: "/Products/T-shirts",

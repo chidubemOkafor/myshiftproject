@@ -15,7 +15,7 @@ const Product = () => {
       <div className="bg-black h-[34em] w-[34em]"></div>
       <div>
         <div className="w-[30em]">
-          <h4 className="font-bold text-5xl pb-3 ">{data.data.name}</h4>
+          <h4 className="font-bold text-5xl pb-3 ">{}</h4>
         </div>
         <p className="font-bold text-xl pb-3">{data.price}</p>
         <p className="pb-5">{data.description}</p>

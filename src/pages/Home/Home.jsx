@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Slider from "../../components/Slider/Slider";
+import Sliders from "../../components/Sliders/Sliders";
 import TypeOf from "../../components/TypeOf/TypeOf";
 import MaleAndFemale from "../../components/MaleAndFemale/MaleAndFemale";
 const Home = () => {
   return (
     <div>
-      <Slider />
+      <Sliders />
       <TypeOf type="trending" />
       <TypeOf type="featured" />
       <MaleAndFemale />

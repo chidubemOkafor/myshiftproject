@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import Card1 from "../../components/Cards/Card1";
 import Card from "../../components/Cards/Card";
 import FetchStrapiData from "../../Hooks/FetchStrapiData";
 import { IoIosArrowDown, IoIosArrowUp, IoIosSearch } from "react-icons/io";
@@ -7,7 +9,7 @@ const Products = (prop) => {
   //hooks
 
   const [isOpen, setIsOpen] = useState(false);
-  const [channel, setChannel] = useState("Products?populate=*");
+
   const [value, setValue] = useState("Inventory");
   const menuRef = useRef();
 
@@ -18,6 +20,7 @@ const Products = (prop) => {
           setIsOpen(false);
         }
       };
+
       document.addEventListener("mousedown", handleMouseDown);
       return () => {
         document.removeEventListener("mousedown", handleMouseDown);
@@ -25,26 +28,25 @@ const Products = (prop) => {
     }
   }, [menuRef]);
 
-  const { data, error, loading } = FetchStrapiData(
-    `http://localhost:1337/api/${channel}`,
-    "15262b76e81005a153caa1620e297eb64dd64895e23d6119c58b84dbde32ba484c4ca700db33caa90724c4e98041bb7d09a088f3f2d06aa711b1767876ef8429bcaaa6d2006cfc4e7d3efef631055699e138c7d5db74f8a50df1bcf47d69ef9b4fe4ef28e511ebcc43501ce1c95c08573a6ef0b30da34b643af07ff38de43b63"
-  );
+  //this is calling the get request for strapi
+  const { data, error, loading } = FetchStrapiData(prop.channel);
+
   console.log(data);
 
-  // functions
+  // functions(this codes are not optimized you might get confused) it could have been done with less code
   const handleOpen = () => setIsOpen(!isOpen);
   function handleFeatured() {
-    setChannel(`Products?populate=*&[filters][type][$eq]=featured`);
+    prop.setChannel(`Products?populate=*&[filters][sub_categories][$eq]=socks`);
     setValue("Featured");
     setIsOpen(false);
   }
   function handleInventory() {
-    setChannel("Products?populate=*");
+    prop.setChannel("Products?populate=*");
     setValue("Inventory");
     setIsOpen(false);
   }
   function handleTrending() {
-    setChannel("Products?populate=*&[filters][type][$eq]=trending");
+    prop.setChannel("Products?populate=*&[filters][type][$eq]=trending");
     setValue("Trending");
     setIsOpen(false);
   }
@@ -54,7 +56,7 @@ const Products = (prop) => {
   const icon = "mt-2 ml-1";
   return (
     <div className="divide-y ">
-      <div className="pb-[1em] flex justify-center font-bold text-4xl py-[1.5em] pb-[1.5em] ">
+      <div className="pb-[1em] flex justify-center font-bold text-4xl py-[1.5em]">
         <h4>{prop.title}</h4>
       </div>
       <div className="">
@@ -89,11 +91,15 @@ const Products = (prop) => {
               <p></p>
             )}
           </div>
-          <div>{data.length} products</div>
+          <div> products</div>
         </div>
       </div>
       <div>
-        <Card data={data} error={error} loading={loading} />
+        {prop.category ? (
+          <Card1 data={data} error={error} loading={loading} />
+        ) : (
+          <Card data={data} error={error} loading={loading} />
+        )}
       </div>
     </div>
   );

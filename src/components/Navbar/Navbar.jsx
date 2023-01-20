@@ -8,6 +8,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Navbar = (props) => {
   const [cartNumber, setCartNumber] = useState(0);
@@ -36,33 +37,7 @@ const Navbar = (props) => {
   const hover = "hover:underline";
   return (
     <>
-      {open1 ? (
-        <div>
-          <div className="h-screen fixed backdrop-brightness-50 w-full ">
-            <div className="w-full  absolute h-20 bg-white">
-              <div className=" flex justify-center">
-                <div className="w-[45em] my-5 border-black rounded-md h-[2.8em] border-2">
-                  {" "}
-                  <input
-                    className=" placeholder:w-20  pl-4 w-[42em] outline-none"
-                    type="text"
-                    placeholder="Search.."
-                  />
-                  <button>
-                    <IoIosSearch className="mt-2 ml-2 h-6 w-6" />
-                  </button>
-                </div>
-
-                <button onClick={handleOpen1}>
-                  <MdClose className="ml-2 h-6 w-6" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+      {open1 ? <Search setOpen1={setOpen1} /> : <></>}
 
       <div className=" bg-white shadow-sm w-full h-20">
         <div className="flex justify-between pt-7">

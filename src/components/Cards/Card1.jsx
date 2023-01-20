@@ -1,5 +1,5 @@
 import React from "react";
-import FetchStrapiData from "../../Hooks/FetchStrapiData";
+
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TfiArrowRight, TfiArrowLeft } from "react-icons/tfi";
 import { Link } from "react-router-dom";
@@ -21,12 +21,13 @@ const Card = ({ data, error, loading }) => {
     <div>
       <div className="flex justify-center">
         <div className="grid xl:grid-cols-5 gap-y-[1.9em] gap-x-[1.9em] mt-[3em] mb-[3em] md:grid-cols-4 sm:grid-cols-3 w-[68em] ">
-          {data.data?.map((item) => (
+          {data?.data?.map((item) => (
             <div key={item.id} slug={item.attributes.slug}>
               <Link to={`/Product/${item.id}`}>
                 <div className="hover:underline">
-                  <div className="w-[12em] h-[12em]">
+                  <div className="w-[12em] h-[12em] bg-contain">
                     <img
+                      className=""
                       src={image + item.attributes.image.data[0].attributes.url}
                       alt="Product Image"
                     />
