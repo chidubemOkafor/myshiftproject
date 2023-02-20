@@ -4,6 +4,7 @@ import {
   IoIosSearch,
   IoClose,
 } from "react-icons/io";
+import Cart from "../Cart/Cart";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
@@ -15,6 +16,7 @@ const Navbar = (props) => {
 
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const menuRef = useRef();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const Navbar = (props) => {
       const handleMouseDown = (event) => {
         if (!menuRef.current.contains(event.target)) {
           setOpen(false);
+          setOpen2(false);
         }
       };
       document.addEventListener("mousedown", handleMouseDown);
@@ -32,17 +35,25 @@ const Navbar = (props) => {
     }
   }, [menuRef]);
   const handleOpen1 = () => setOpen1(!open1); //this is a different open for a different function
-
+  const handleOpen2 = () => setOpen2(!open2);
   const handleOpen = () => setOpen(!open);
   const hover = "hover:underline";
   return (
     <>
       {open1 ? <Search setOpen1={setOpen1} /> : <></>}
-
+      {open2 ? <Cart menuRef={menuRef} handleOpen2={handleOpen2} /> : <></>}
       <div className=" bg-white shadow-sm w-full h-20">
         <div className="flex justify-between pt-7">
           <Link to={"./"}>
-            <div className="pl-20">LOGO</div>
+            <div className="pl-20">
+              {" "}
+              <div className="gap-8">
+                <h1 className="text-3xl font-bold absolute">SHIFT</h1>{" "}
+                <h4 className="text-yellow-300 text-4xl font-bold italics ">
+                  SHIFT
+                </h4>
+              </div>
+            </div>
           </Link>
           <div className="flex gap-x-6">
             <p>
@@ -91,16 +102,18 @@ const Navbar = (props) => {
               )}
             </div>
           </div>
-          <div className="flex pr-20">
+          <div className="flex items-center pr-20">
             <button onClick={handleOpen1}>
-              <IoIosSearch className="h-5 w-5" />
+              <IoIosSearch className="h-6 w-6" />
             </button>
-            <Link to={"./Cart"}>
-              <div className="bg-red-600 rounded-full text-white text-sm font-bold h-4 w-4 flex justify-center items-center">
-                {cartNumber}
-              </div>
-              <HiOutlineShoppingBag className="h-6 w-6 ml-4" />
-            </Link>
+            <div ref={menuRef}>
+              <button onClick={handleOpen2}>
+                <div className="bg-black rounded-full ml-7 text-white text-sm font-bold h-4 w-4 flex justify-center items-center absolute">
+                  {cartNumber}
+                </div>{" "}
+                <HiOutlineShoppingBag className="h-6 w-6 ml-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

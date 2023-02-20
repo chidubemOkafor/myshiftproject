@@ -8,8 +8,8 @@ const Search = ({ setOpen1 }) => {
   };
   return (
     <div>
-      <div className="h-screen fixed backdrop-brightness-50 w-full ">
-        <div className="w-full  absolute h-20 bg-white">
+      <div className="h-screen fixed backdrop-brightness-50 w-full fixed">
+        <div className="w-full fixed h-20 bg-white">
           <div className=" flex justify-center">
             <div className="w-[45em] my-5 border- rounded-md h-[2.8em] border-2">
               <input

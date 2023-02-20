@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import React, { useState, useEffect, useRef } from "react";
 
 const Slideshow = ({ imgs }) => {
   const [index, setIndex] = useState(0);
+  const [width, setWidth] = useState(7);
+  const [height, setHeight] = useState(7);
 
+  const moverSize = (s) => {
+    setWidth(width + s);
+    setHeight(height + s);
+  };
   const next = () => {
     if (index === imgs.length - 1) {
       setIndex(0);
@@ -24,6 +31,7 @@ const Slideshow = ({ imgs }) => {
       clearTimeout(timeoutRef.current);
     }
   }
+
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
@@ -31,6 +39,7 @@ const Slideshow = ({ imgs }) => {
         setIndex((prevIndex) =>
           prevIndex === imgs.length - 1 ? 0 : prevIndex + 1
         ),
+
       5000
     );
 
@@ -41,7 +50,7 @@ const Slideshow = ({ imgs }) => {
   return (
     <div>
       <div
-        className="w-full h-[30em]  bg-cover transition-all duration-500 ease-in-out"
+        className="w-full h-[30em] bg-cover transition-all duration-500 ease-in-out"
         style={{
           backgroundImage: `url(${imgs[index].images})`,
           brightness: 90,
@@ -64,16 +73,20 @@ const Slideshow = ({ imgs }) => {
           </button>
         </div>
 
-        <div className="justify-center flex absolute inset-x-0  mb-5">
+        <div className="justify-center h-6 flex absolute inset-x-0 mt-[5em] mb-5">
           <button
-            className="bg-black opacity-75 rounded-full w-6 mr-2 "
+            className="bg-black pl-1 text-white opacity-75 rounded-full w-6 mr-2 "
             onClick={prev}
           >
-            L
+            <AiOutlineLeft />
           </button>
-          <div className=" bg-black opacity-60 items-center flex">
+          <div className=" items-center flex">
             {imgs.map((imgs, i) => (
               <button
+                style={{
+                  width: `${width}px`,
+                  height: `${height}px`,
+                }}
                 onClick={() => {
                   setIndex(i);
                 }}
@@ -83,10 +96,10 @@ const Slideshow = ({ imgs }) => {
             ))}
           </div>
           <button
-            className="bg-black opacity-75 rounded-full w-6 ml-2"
+            className="bg-black opacity-75 text-white pl-1 rounded-full w-6 ml-2"
             onClick={next}
           >
-            R
+            <AiOutlineRight />
           </button>
         </div>
       </div>
@@ -100,12 +113,12 @@ const Sliders = () => {
         imgs={[
           {
             images:
-              "https://images.pexels.com/photos/35188/child-childrens-baby-children-s.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              "https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             text: "shift",
           },
           {
             images:
-              "https://images.pexels.com/photos/298864/pexels-photo-298864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              "https://images.pexels.com/photos/9976280/pexels-photo-9976280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             text: "affordable",
           },
           {

@@ -4,7 +4,6 @@ import Product from "./pages/Product/Product";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import Cart from "./pages/Cart/Cart";
 import Shelf from "./pages/Shelf/Shelf";
 import Hoodies from "./pages/Collections/Hoodies";
 import Jackets from "./pages/Collections/Jackets";
@@ -77,10 +76,6 @@ function App() {
         {
           path: "/Shelf",
           element: <Shelf />,
-        },
-        {
-          path: "/Cart",
-          element: <Cart />,
         },
       ],
     },
